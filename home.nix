@@ -5,11 +5,14 @@
   home.homeDirectory = builtins.getEnv "HOME";
 
   home.packages = with pkgs; [
-    # Git
+    # Startter
     git
     curl
     wget
     fzf
+    bat
+    eza
+    fd
 
     # neovim
     python3Minimal
@@ -25,7 +28,7 @@
     rustc
     luarocks
     php
-    composer
+    php84Packages.cyclonedx-php-composer
     jdk
     julia
     python312Packages.pip
@@ -33,8 +36,10 @@
     nodejs_22
     neovim-unwrapped
 
-    # shell
+    # Tmux
     tmux
+
+    # shell
     zsh
     starship
 
@@ -42,6 +47,8 @@
 
   imports = [
     ./modules/neovim.nix
+    ./modules/shell.nix
+    ./modules/tmux.nix
   ];
 
   home.stateVersion = "25.05";
