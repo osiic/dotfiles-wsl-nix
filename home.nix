@@ -7,21 +7,24 @@
   home.packages = with pkgs; [
     # Git
     git
-
-    # neovim
-    neovim-unwrapped
-
-    
     curl
     wget
+    fzf
+    
+
+    # neovim
+    python3Minimal
+    lazygit
+    xclip
+    gcc
+    neovim
+    neovim-unwrapped
+
     tmux
     zsh
-    fzf
-    lazygit
     starship
     nodejs_22
-    python3Minimal
-    xclip
+
   ];
 
   imports = [
