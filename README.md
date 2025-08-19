@@ -28,27 +28,7 @@ dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat univer
 ## ⚡ Quick Setup (WSL / Linux)
 
 ```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-# 1️⃣ Install Nix, Setup flace, Home Manager
-export NIX_INSTALL_NONINTERACTIVE=1
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-. ~/.nix-profile/etc/profile.d/nix.sh
-
-# 2️⃣ Clone dotfiles
-git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
-cd ~/dotfiles-wsl-nix
-git pull --rebase
-
-# 3️⃣ Apply Home Manager configuration
-export USER=$(whoami)
-nix run .#homeConfigurations.default.activationPackage
-home-manager switch --flake .#default
-
-echo "✅ Done! Restart terminal to see your new shell & tools."
+sh <(curl -L https://nixos.org/nix/install) --no-daemon && mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf && . ~/.nix-profile/etc/profile.d/nix.sh && git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix && cd ~/dotfiles-wsl-nix && git pull --rebase && export USER=$(whoami) && nix run .#homeConfigurations.default.activationPackage && home-manager switch --flake .#default && echo "✅ Done! Restart terminal to see your new shell & tools."
 ```
 
 > Semua paket, alias, shell, dan prompt akan otomatis aktif.
