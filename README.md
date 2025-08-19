@@ -28,22 +28,6 @@ dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat univer
 ## ⚡ Quick Setup (WSL / Linux)
 
 ```bash
-# 1️⃣ Install Nix
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-. ~/.nix-profile/etc/profile.d/nix.sh
-
-# 2️⃣ Clone dotfiles-wsl-nix
-git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
-cd ~/dotfiles-wsl-nix
-
-# 3️⃣ Jalankan konfigurasi Home Manager
-home-manager switch --flake .#default --impure
-
-# Quick Setup Dotfiles (WSL / Ubuntu + Nix + Home Manager)
-
-**Copy & paste ini di terminal WSL/Ubuntu baru:**
-
-```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
