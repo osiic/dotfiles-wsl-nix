@@ -19,7 +19,7 @@
     xclip
   ];
 
-  modules = [
+  imports = [
     ./modules/neovim.nix
   ];
 
