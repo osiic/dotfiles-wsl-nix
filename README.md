@@ -38,6 +38,28 @@ cd ~/dotfiles-wsl-nix
 
 # 3️⃣ Jalankan konfigurasi Home Manager
 home-manager switch --flake .#default --impure
+
+# Quick Setup Dotfiles (WSL / Ubuntu + Nix + Home Manager)
+
+**Copy & paste ini di terminal WSL/Ubuntu baru:**
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+# 1️⃣ Install Nix (non-interactive)
+sh <(curl -L https://nixos.org/nix/install) --no-daemon <<< $'\n'
+. ~/.nix-profile/etc/profile.d/nix.sh
+
+# 2️⃣ Clone dotfiles
+git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
+cd ~/dotfiles-wsl-nix
+git pull --rebase || true
+
+# 3️⃣ Apply Home Manager configuration
+home-manager switch --flake .#default --impure --quiet
+
+echo "✅ Done! Restart terminal to see your new shell & tools."
 ```
 
 > Semua paket, alias, shell, dan prompt akan otomatis aktif.
