@@ -28,7 +28,7 @@ dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat univer
 ## ⚡ Quick Setup (WSL / Linux)
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install) --no-daemon && mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf && . ~/.nix-profile/etc/profile.d/nix.sh && git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix && cd ~/dotfiles-wsl-nix && git pull --rebase && nix run .#homeConfigurations.default.activationPackage && home-manager switch --flake .#default && echo "✅ Done! Restart terminal to see your new shell & tools."
+chmod +x install.sh && ./install.sh
 ```
 
 > Semua paket, alias, shell, dan prompt akan otomatis aktif.
