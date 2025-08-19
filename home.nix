@@ -10,12 +10,14 @@
     curl
     wget
     fzf
-    
 
     # neovim
     python3Minimal
     lazygit
     xclip
+    stylua
+    rust-analyzer
+
     gcc
     neovim-unwrapped
 
