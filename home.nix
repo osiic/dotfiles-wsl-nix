@@ -17,7 +17,6 @@
     lazygit
     xclip
     gcc
-    neovim
     neovim-unwrapped
 
     tmux
