@@ -1,28 +1,29 @@
 { config, pkgs, ... }:
 
 let
-  nvimDir = builtins.getEnv "HOME" + "/.config/nvim";
+  nvimDir = "${config.home.homeDirectory}/.config/nvim";
 in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
+    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
 
-    # Ganti deprecated 'configure' dengan 'extraConfig'
+    # Tambah konfigurasi ekstra runtimepath
     extraConfig = ''
       set runtimepath^=${nvimDir}
     '';
   };
 
-  # Auto clone repo jika folder belum ada
-  home.file.".config/nvim".source = if builtins.pathExists nvimDir then
-    nvimDir
-  else
-    builtins.fetchGit {
-      url = "https://github.com/osiic/nvim.git";
-      rev = "refs/heads/main";
-    };
+  # Pre-activation hook: clone atau pull repo
+  home.activation = {
+    nvim = pkgs.writeShellScript "nvim-setup" ''
+      if [ ! -d "${nvimDir}" ]; then
+        git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+      else
+        cd "${nvimDir}" && git pull --rebase
+      fi
+    '';
+  };
 }
-
