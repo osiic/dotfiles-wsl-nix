@@ -32,16 +32,16 @@ dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat univer
 set -euo pipefail
 
 # 1️⃣ Install Nix (non-interactive)
-sh <(curl -L https://nixos.org/nix/install) --no-daemon <<< $'\n'
+export NIX_INSTALL_NONINTERACTIVE=1
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
 
 # 2️⃣ Clone dotfiles
 git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
 cd ~/dotfiles-wsl-nix
-git pull --rebase || true
 
 # 3️⃣ Apply Home Manager configuration
-home-manager switch --flake .#default --impure --quiet
+home-manager switch --flake .#default
 
 echo "✅ Done! Restart terminal to see your new shell & tools."
 ```
