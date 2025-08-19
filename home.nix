@@ -17,7 +17,6 @@
     xclip
     stylua
     rust-analyzer
-
     gcc
     neovim-unwrapped
 
