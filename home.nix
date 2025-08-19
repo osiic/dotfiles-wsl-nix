@@ -42,13 +42,10 @@
     # shell
     zsh
     starship
-
   ];
 
   imports = [
     ./modules/neovim.nix
-    ./modules/shell.nix
-    ./modules/tmux.nix
   ];
 
   home.stateVersion = "25.05";
