@@ -16,6 +16,8 @@
     fzf
     lazygit
     starship
+    nodejs_22
+    python3Full
   ];
 
   # Zsh + Oh My Zsh
@@ -29,10 +31,6 @@
     v  = "nvim";
     ll = "ls -alh";
   };
-
-  # Node.js + Python
-  programs.nodejs.enable = true;
-  programs.python.enable = true;
 
   # Starship prompt
   programs.starship.enable = true;
