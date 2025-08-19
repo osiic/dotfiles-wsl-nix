@@ -17,11 +17,15 @@ in {
   };
 
   # Pastikan folder nvim ada, clone atau pull repo
-  home.activation.postActivation = ''
-    if [ ! -d "${nvimDir}" ]; then
-      git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
-    else
-      cd "${nvimDir}" && git pull --rebase
-    fi
-  '';
+home.activation.postActivation = ''
+  if [ ! -d "${nvimDir}" ]; then
+    git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+  elif [ -d "${nvimDir}/.git" ]; then
+    cd "${nvimDir}" && git pull --rebase
+  else
+    rm -rf "${nvimDir}"
+    git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+  fi
+'';
+
 }
