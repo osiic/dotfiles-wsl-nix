@@ -18,12 +18,24 @@
     stylua
     rust-analyzer
     gcc
+    unzip 
+    ripgrep
+    fd
+    go
+    rustc
+    luarocks
+    php
+    composer
+    jdk
+    julia
+    python312Packages.pip
+    tree-sitter
+    nodejs_22
     neovim-unwrapped
 
     tmux
     zsh
     starship
-    nodejs_22
 
   ];
 
