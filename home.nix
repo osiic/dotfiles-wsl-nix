@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     # neovim
     neovim
-    neovim-unwrapped
 
     git
     curl
