@@ -33,6 +33,7 @@
     nodejs_22
     neovim-unwrapped
 
+    # shell
     tmux
     zsh
     starship
