@@ -3,7 +3,7 @@
 {
   # Ambil username & home directory otomatis
   home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.homeDirectory = "/home/${builtins.getEnv "USER"}";
 
   # Paket default
   home.packages = with pkgs; [
