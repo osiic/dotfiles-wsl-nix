@@ -37,7 +37,6 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 . ~/.nix-profile/etc/profile.d/nix.sh
-nix profile install nixpkgs#home-manager
 
 # 2️⃣ Clone dotfiles
 git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
@@ -46,6 +45,7 @@ git pull --rebase
 
 # 3️⃣ Apply Home Manager configuration
 export USER=$(whoami)
+nix run .#homeConfigurations.default.activationPackage
 home-manager switch --flake .#default
 
 echo "✅ Done! Restart terminal to see your new shell & tools."
