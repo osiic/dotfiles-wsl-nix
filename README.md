@@ -1,4 +1,3 @@
-
 # dotfiles-wsl-nix Universal Nix + Home Manager (25.05)
 
 dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat universal:
@@ -41,7 +40,7 @@ chmod +x install.sh && ./install.sh
 Kalau ada update di repo:
 
 ```bash
-cd ~/dotfiles-wsl-nix && git pull --rebase && home-manager switch --flake .#default --impure
+cd ~/dotfiles-wsl-nix && git reset --hard HEAD && git pull --rebase && home-manager switch --flake .#default --impure
 ```
 
 ## 🔄 Romove garbage package
