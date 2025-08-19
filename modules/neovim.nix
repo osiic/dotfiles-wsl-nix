@@ -6,7 +6,6 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;       # Pakai satu Neovim saja
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
