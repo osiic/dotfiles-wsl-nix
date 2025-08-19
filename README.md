@@ -31,12 +31,13 @@ dotfiles-wsl-nix ini berbasis **Nix flakes** + **Home Manager**, bersifat univer
 #!/usr/bin/env bash
 set -euo pipefail
 
-# 1️⃣ Install Nix (non-interactive)
+# 1️⃣ Install Nix, Setup flace, Home Manager
 export NIX_INSTALL_NONINTERACTIVE=1
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 . ~/.nix-profile/etc/profile.d/nix.sh
+nix profile install nixpkgs#home-manager
 
 # 2️⃣ Clone dotfiles
 git clone https://github.com/osiic/dotfiles-wsl-nix.git ~/dotfiles-wsl-nix
