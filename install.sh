@@ -17,7 +17,7 @@ nix profile install nixpkgs#home-manager
 
 # Clone dotfiles or update if already exists
 if [ -d "$HOME/dotfiles-wsl-nix" ]; then
-    cd "$HOME/dotfiles-wsl-nix" && git pull --rebase
+    cd "$HOME/dotfiles-wsl-nix" && git reset --hard HEAD && git pull --rebase
 else
     git clone https://github.com/osiic/dotfiles-wsl-nix.git "$HOME/dotfiles-wsl-nix"
     cd "$HOME/dotfiles-wsl-nix"
