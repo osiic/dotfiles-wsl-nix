@@ -17,7 +17,7 @@
     lazygit
     starship
     nodejs_22
-    python3Full
+    python3Minimal
   ];
 
   # Shell alias
