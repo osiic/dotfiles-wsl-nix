@@ -41,9 +41,14 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon && mkdir -p ~/.config/ni
 Kalau ada update di repo:
 
 ```bash
-cd ~/dotfiles-wsl-nix
-git pull
-home-manager switch --flake .#default --impure
+cd ~/dotfiles-wsl-nix && git pull --rebase && home-manager switch --flake .#default --impure
+```
+
+## 🔄 Romove garbage package
+
+Kalau mau hapus semua paket dan environment Nix lama yang tidak terpakai:
+```bash
+sudo nix-collect-garbage -d && nix-env --delete-generations +1
 ```
 
 ---
