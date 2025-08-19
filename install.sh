@@ -13,7 +13,7 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 . ~/.nix-profile/etc/profile.d/nix.sh
 
 # Install home-manager
-nix profile install nixpkgs#home-manager
+nix profile add nixpkgs#home-manager
 
 # Clone dotfiles or update if already exists
 if [ -d "$HOME/dotfiles-wsl-nix" ]; then
