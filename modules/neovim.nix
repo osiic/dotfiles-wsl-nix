@@ -19,12 +19,12 @@ in {
   # Pastikan folder nvim ada, clone atau pull repo
 home.activation.postActivation = ''
   if [ ! -d "${nvimDir}" ]; then
-    ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+    ${pkgs.git}/bin/git clone https://github.com/osiic/nvim.git "${nvimDir}"
   elif [ -d "${nvimDir}/.git" ]; then
     cd "${nvimDir}" && git pull --rebase
   else
     rm -rf "${nvimDir}"
-    ${pkgs.git}/bin/git -b own https://github.com/osiic/nvim.git "${nvimDir}"
+    ${pkgs.git}/bin/git https://github.com/osiic/nvim.git "${nvimDir}"
   fi
 '';
 
