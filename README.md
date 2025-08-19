@@ -45,6 +45,7 @@ cd ~/dotfiles-wsl-nix
 git pull --rebase
 
 # 3️⃣ Apply Home Manager configuration
+export USER=$(whoami)
 home-manager switch --flake .#default
 
 echo "✅ Done! Restart terminal to see your new shell & tools."
