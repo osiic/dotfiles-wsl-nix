@@ -14,11 +14,16 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      # Home Manager universal config
+      # Home Manager config
       homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
       };
+
+      # Tambah entry apps supaya bisa `nix run . switch`
+      apps.${system}.switch = {
+        type = "app";
+        program = "${home-manager.packages.${system}.default}/bin/home-manager";
+      };
     };
 }
-
