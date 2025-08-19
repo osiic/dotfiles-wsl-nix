@@ -10,14 +10,20 @@ in {
     viAlias = true;
     vimAlias = true;
 
+    # extraConfig bisa kosong, karena kita pakai init.lua dari repo
     extraConfig = ''
-      " Tambahkan runtimepath ke config lokal
-      set runtimepath^=${nvimDir}
+      " runtimepath akan otomatis mengikuti nvimDir
     '';
   };
 
   # Pastikan folder nvim ada, clone atau pull repo
   home.activation.postActivation = ''
+    # Backup init.lua lama kalau ada
+    if [ -f "${nvimDir}/init.lua" ]; then
+      mv "${nvimDir}/init.lua" "${nvimDir}/init.lua.backup"
+    fi
+
+    # Clone repo kalau belum ada
     if [ ! -d "${nvimDir}" ]; then
       ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
     elif [ -d "${nvimDir}/.git" ]; then
