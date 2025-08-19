@@ -5,10 +5,13 @@
   home.homeDirectory = builtins.getEnv "HOME";
 
   home.packages = with pkgs; [
+    # Git
+    git
+
     # neovim
     neovim-unwrapped
 
-    git
+    
     curl
     wget
     tmux
