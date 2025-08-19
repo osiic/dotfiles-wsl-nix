@@ -20,14 +20,12 @@ in {
   home.activation.postActivation = ''
     # Backup init.lua lama kalau ada
     if [ -f "${nvimDir}/init.lua" ]; then
-      mv "${nvimDir}/init.lua" "${nvimDir}/init.lua.backup"
+      rm -rf "${nvimDir}"
     fi
 
     # Clone repo kalau belum ada
     if [ ! -d "${nvimDir}" ]; then
       ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
-    elif [ -d "${nvimDir}/.git" ]; then
-      cd "${nvimDir}" && ${pkgs.git}/bin/git reset --hard HEAD && ${pkgs.git}/bin/git pull --rebase
     else
       rm -rf "${nvimDir}"
       ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
