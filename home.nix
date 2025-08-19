@@ -20,10 +20,6 @@
     python3Full
   ];
 
-  # Zsh + Oh My Zsh
-  programs.zsh.enable = true;
-  programs.zsh.ohMyZsh.enable = true;
-
   # Shell alias
   programs.zsh.shellAliases = {
     gs = "git status";
