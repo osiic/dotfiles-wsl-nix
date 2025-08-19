@@ -9,20 +9,20 @@ in {
     package = pkgs.neovim;
     viAlias = true;
     vimAlias = true;
-    configure = {
-      customRC = ''
-        set runtimepath^=${nvimDir}
-      '';
-    };
+
+    # Ganti deprecated 'configure' dengan 'extraConfig'
+    extraConfig = ''
+      set runtimepath^=${nvimDir}
+    '';
   };
 
-  # Jika folder nvim belum ada, fetch langsung dari GitHub
+  # Auto clone repo jika folder belum ada
   home.file.".config/nvim".source = if builtins.pathExists nvimDir then
     nvimDir
   else
     builtins.fetchGit {
       url = "https://github.com/osiic/nvim.git";
-      rev = "refs/heads/main"; # atau tag tertentu
+      rev = "refs/heads/main";
     };
 }
 
