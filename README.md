@@ -34,6 +34,8 @@ set -euo pipefail
 # 1️⃣ Install Nix (non-interactive)
 export NIX_INSTALL_NONINTERACTIVE=1
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 . ~/.nix-profile/etc/profile.d/nix.sh
 
 # 2️⃣ Clone dotfiles
