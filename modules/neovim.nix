@@ -1,34 +1,30 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   nvimDir = "${config.home.homeDirectory}/.config/nvim";
+  nvimRepo = "${config.home.homeDirectory}/.local/src/nvim"; # folder repo lokal
 in {
 
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-
-    # extraConfig bisa kosong, karena kita pakai init.lua dari repo
-    extraConfig = ''
-      " runtimepath akan otomatis mengikuti nvimDir
-    '';
+    defaultEditor = true;
   };
 
-  # Pastikan folder nvim ada, clone atau pull repo
-  home.activation.postActivation = ''
-    # Backup init.lua lama kalau ada
-    if [ -f "${nvimDir}/init.lua" ]; then
-      rm -rf "${nvimDir}"
-    fi
+  # Buat symlink init.lua dari repo
+  home.activation.linkNvim = lib.hm.dag.entryAfter [ "programs.neovim.enable" ] ''
+    # Buat folder repo lokal kalau belum ada
+    mkdir -p "${config.home.homeDirectory}/.local/src"
 
     # Clone repo kalau belum ada
-    if [ ! -d "${nvimDir}" ]; then
-      ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+    if [ ! -d "${nvimRepo}/.git" ]; then
+      ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimRepo}"
     else
-      rm -rf "${nvimDir}"
-      ${pkgs.git}/bin/git clone -b own https://github.com/osiic/nvim.git "${nvimDir}"
+      cd "${nvimRepo}" && ${pkgs.git}/bin/git fetch --all && ${pkgs.git}/bin/git reset --hard origin/own
     fi
+
+    # Buat symlink ke folder nvim
+    ln -sfn "${nvimRepo}" "${nvimDir}"
   '';
 }
