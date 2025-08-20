@@ -1,16 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
+let
+  tmuxRepo = builtins.fetchGit {
+    url = "https://github.com/osiic/tmux.git";
+    ref = "main"; # atau branch lain
+  };
+in {
   programs.tmux = {
     enable = true;
     shortcut = "a";
     keyMode = "vi";
     mouse = true;
-    extraConfig = ''
-      set -g status-style bg=default,fg=white
-      set -g mouse on
-      bind | split-window -h
-      bind - split-window -v
-    '';
+    extraConfig = builtins.readFile "${tmuxRepo}/tmux.conf";
   };
 }
