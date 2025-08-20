@@ -25,5 +25,5 @@ home.packages = with pkgs; [
 ];
 
   # Versi state Home Manager (harus cocok sama channel yg dipakai)
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }
