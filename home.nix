@@ -49,7 +49,7 @@
 
   imports = [
     ./modules/neovim.nix
-    (import ./modules/tmux.nix)
+    ./modules/tmux.nix
   ];
 
   home.stateVersion = "24.11";
