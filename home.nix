@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 {
   home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.homeDirectory = "/home/${builtins.getEnv "USER"}";
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     # Startter
@@ -21,7 +22,7 @@
     stylua
     rust-analyzer
     gcc
-    unzip 
+    unzip
     ripgrep
     fd
     go
@@ -34,6 +35,8 @@
     python312Packages.pip
     tree-sitter
     nodejs_22
+    nil
+    nixpkgs-fmt
     neovim-unwrapped
 
     # Tmux
@@ -46,8 +49,8 @@
 
   imports = [
     ./modules/neovim.nix
+    (import ./modules/tmux.nix)
   ];
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "24.11";
 }
-

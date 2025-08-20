@@ -1,10 +1,10 @@
 {
-  description = "Dotfiles universal Nix + Home Manager 25.05";
+  description = "Dotfiles universal Nix + Home Manager";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -13,11 +13,13 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-    in {
-      # Home Manager config
+    in
+    {
       homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+        ];
       };
 
       # Tambah entry apps supaya bisa `nix run . switch`

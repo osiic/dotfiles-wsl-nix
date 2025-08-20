@@ -25,9 +25,10 @@ fi
 
 # Set USER env (Home Manager butuh)
 export USER=$(whoami)
+export DOTFILES_ROOT=$(pwd)  
 
 # Build & activate Home Manager from flake
-home-manager switch --flake ~/dotfiles-wsl-nix#default --impure
+home-manager switch --flake .#default --impure
 
 # ✅ Done
 echo "✅ Done! Restart terminal untuk melihat shell & tools baru."
