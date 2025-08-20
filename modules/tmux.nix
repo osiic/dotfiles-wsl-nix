@@ -1,16 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, tmux-conf, ... }:
 
-let
-  tmuxRepo = builtins.fetchGit {
-    url = "https://github.com/osiic/tmux.git";
-    ref = "main"; # atau branch lain
-  };
-in {
+{
   programs.tmux = {
     enable = true;
     shortcut = "a";
     keyMode = "vi";
     mouse = true;
-    extraConfig = builtins.readFile "${tmuxRepo}/tmux.conf";
+
+    # Baca langsung tmux.conf dari repo `osiic/tmux`
+    extraConfig = builtins.readFile "${tmux-conf}/tmux.conf";
   };
 }
