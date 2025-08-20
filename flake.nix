@@ -8,11 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Tmux config dari repo luar (bukan flake)
-    tmux-conf = {
-      url = "github:osiic/tmux";
-      flake = false;
-    };
+    # Tmux config dari repo luar
+    tmux-conf.url = "github:osiic/tmux";
 
     # Neovim config dari repo luar juga (misal kamu punya `osiic/nvim`)
     nvim-conf = {
@@ -30,13 +27,12 @@
         inherit pkgs;
         modules = [
           ./home.nix
-          ./modules/tmux.nix
           ./modules/neovim.nix
+          tmux-conf.homeManagerModules.tmux
 
           # inject inputs supaya bisa dipakai di modul
           ({ ... }: {
             _module.args = {
-              tmux-conf = tmux-conf;
               nvim-conf = nvim-conf;
             };
           })
