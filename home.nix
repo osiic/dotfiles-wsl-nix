@@ -16,7 +16,7 @@ home.packages = with pkgs; [
   neovim-unwrapped lazygit tree-sitter ripgrep stylua xclip gcc unzip nixpkgs-fmt
 
   # Language runtimes & tooling
-  python3Minimal python312Packages.pip go rustc rust-analyzer luarocks \
+  python3Minimal python312Packages.pip go rustc rust-analyzer luarocks 
   php php84Packages.cyclonedx-php-composer jdk julia nodejs_22 nil
 
   # Terminal tools
