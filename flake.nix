@@ -10,7 +10,7 @@
 
     # Untuk Development
     # tmux-conf.url = "path:../tmux";
-    nvim-conf.url = "path:../nvim";
+    nvim-conf.url = "path:/home/osiic/.config/nvim";
 
     # Config dari repo luar
     tmux-conf.url = "github:osiic/tmux";
