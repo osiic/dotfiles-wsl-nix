@@ -7,14 +7,14 @@ let
   # Auto-detect dotfiles root - several options:
 
   # Option 1: Use environment variable (recommended)
-  dotfilesRoot = builtins.getEnv "DOTFILES_ROOT";
+  # dotfilesRoot = builtins.getEnv "DOTFILES_ROOT";
 
   # Option 2: If you want to detect based on common dotfiles directory names
-  # dotfilesRoot = 
-  #   if builtins.pathExists "${homeDir}/dotfiles-wsl-nix" then "${homeDir}/dotfiles-wsl-nix"
-  #   else if builtins.pathExists "${homeDir}/dotfiles" then "${homeDir}/dotfiles"
-  #   else if builtins.pathExists "${homeDir}/.dotfiles" then "${homeDir}/.dotfiles"
-  #   else throw "Could not find dotfiles directory";
+  dotfilesRoot = 
+     if builtins.pathExists "${homeDir}/dotfiles-wsl-nix" then "${homeDir}/dotfiles-wsl-nix"
+     else if builtins.pathExists "${homeDir}/dotfiles" then "${homeDir}/dotfiles"
+     else if builtins.pathExists "${homeDir}/.dotfiles" then "${homeDir}/.dotfiles"
+     else throw "Could not find dotfiles directory";
 
   nvimRepo = "${dotfilesRoot}/package/nvim";
 in
