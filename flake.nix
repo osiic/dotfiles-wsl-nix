@@ -8,6 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Untuk Developer
+    # tmux-conf.url = "path:../tmux";
+    # nvim-conf.url = "path:../nvim";
     # Tmux config dari repo luar
     tmux-conf.url = "github:osiic/tmux";
 
