@@ -8,17 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Untuk Developer
+    # Untuk Development
     # tmux-conf.url = "path:../tmux";
     # nvim-conf.url = "path:../nvim";
-    # Tmux config dari repo luar
-    tmux-conf.url = "github:osiic/tmux";
 
-    # Neovim config dari repo luar juga (misal kamu punya `osiic/nvim`)
-    nvim-conf = {
-      url = "github:osiic/nvim";
-      flake = false;
-    };
+    # Config dari repo luar
+    tmux-conf.url = "github:osiic/tmux";
+    nvim-conf.url = "github:osiic/nvim";
   };
 
   outputs = { self, nixpkgs, home-manager, tmux-conf, nvim-conf, ... }:
@@ -30,15 +26,8 @@
         inherit pkgs;
         modules = [
           ./home.nix
-          ./modules/neovim.nix
+          nvim-conf.homeManagerModules.tmux
           tmux-conf.homeManagerModules.tmux
-
-          # inject inputs supaya bisa dipakai di modul
-          ({ ... }: {
-            _module.args = {
-              nvim-conf = nvim-conf;
-            };
-          })
         ];
       };
     };
