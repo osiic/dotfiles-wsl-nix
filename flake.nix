@@ -13,8 +13,8 @@
     # nvim-conf.url = "path:../nvim";
 
     # Config dari repo luar
-    tmux-conf.url = "github:osiic/tmux";
-    nvim-conf.url = "github:osiic/nvim";
+    tmux-conf.url = "git+ssh://git@github.com/osiic/tmux";
+    nvim-conf.url = "git+ssh://git@github.com/osiic/nvim";
   };
 
   outputs = { self, nixpkgs, home-manager, tmux-conf, nvim-conf, ... }:
