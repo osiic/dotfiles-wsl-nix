@@ -8,53 +8,20 @@
   # Wajib: enable home-manager module
   programs.home-manager.enable = true;
 
-  # Paket yang mau di-install
-  home.packages = with pkgs; [
-    # Starter tools
-    git
-    curl
-    wget
-    fzf
-    bat
-    eza
-    fd
+home.packages = with pkgs; [
+  # Starter tools
+  git curl wget fzf bat eza fd
 
-    # Neovim & deps
-    python3Minimal
-    lazygit
-    xclip
-    stylua
-    rust-analyzer
-    gcc
-    unzip
-    ripgrep
-    go
-    rustc
-    luarocks
-    php
-    php84Packages.cyclonedx-php-composer
-    jdk
-    julia
-    python312Packages.pip
-    tree-sitter
-    nodejs_22
-    nil
-    nixpkgs-fmt
-    neovim-unwrapped
+  # Neovim & dependencies
+  neovim-unwrapped lazygit tree-sitter ripgrep stylua xclip gcc unzip nixpkgs-fmt
 
-    # Tmux
-    tmux
+  # Language runtimes & tooling
+  python3Minimal python312Packages.pip go rustc rust-analyzer luarocks \
+  php php84Packages.cyclonedx-php-composer jdk julia nodejs_22 nil
 
-    # Shell
-    zsh
-    starship
-  ];
-
-  # Import module tambahan
-  imports = [
-  #  ./modules/neovim.nix
-    ./modules/tmux.nix
-  ];
+  # Terminal tools
+  tmux zsh starship
+];
 
   # Versi state Home Manager (harus cocok sama channel yg dipakai)
   home.stateVersion = "24.11";
