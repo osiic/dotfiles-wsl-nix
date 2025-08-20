@@ -11,18 +11,17 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
+      system = "x86_64-linux"; # bisa diubah kalau arm64
       pkgs = import nixpkgs { inherit system; };
-    in
-    {
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-        ];
+    in {
+      homeConfigurations.${system} = {
+        default = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        };
       };
 
-      # Tambah entry apps supaya bisa `nix run . switch`
+      # Biar bisa run: `nix run .#switch`
       apps.${system}.switch = {
         type = "app";
         program = "${home-manager.packages.${system}.default}/bin/home-manager";
