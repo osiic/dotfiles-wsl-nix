@@ -13,7 +13,7 @@ home.packages = with pkgs; [
   git curl wget fzf bat eza fd
 
   # Neovim & dependencies
-  neovim lazygit tree-sitter ripgrep stylua xclip gcc unzip
+  lazygit tree-sitter ripgrep stylua xclip gcc unzip
 
   # Language runtimes & tooling
   python3Full python312Packages.pip go rustc rust-analyzer luarocks 
