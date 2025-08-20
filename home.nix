@@ -13,11 +13,12 @@ home.packages = with pkgs; [
   git curl wget fzf bat eza fd
 
   # Neovim & dependencies
-  neovim-unwrapped lazygit tree-sitter ripgrep stylua xclip gcc unzip nixpkgs-fmt
+  neovim-nightly lazygit tree-sitter ripgrep stylua xclip gcc unzip
 
   # Language runtimes & tooling
-  python3Minimal python312Packages.pip go rustc rust-analyzer luarocks 
+  python3Full python312Packages.pip go rustc rust-analyzer luarocks 
   php php84Packages.cyclonedx-php-composer jdk julia nodejs_22 nil
+  lua51Packages.jsregexp cargo 
 
   # Terminal tools
   tmux zsh starship
