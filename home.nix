@@ -51,10 +51,10 @@
   ];
 
   # Import module tambahan
-  # imports = [
+  imports = [
   #  ./modules/neovim.nix
-  #  ./modules/tmux.nix
-  # ];
+    ./modules/tmux.nix
+  ];
 
   # Versi state Home Manager (harus cocok sama channel yg dipakai)
   home.stateVersion = "24.11";
