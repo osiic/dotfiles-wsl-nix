@@ -26,8 +26,8 @@
         inherit pkgs;
         modules = [
           ./home.nix
-          nvim-conf.homeManagerModules.tmux
           tmux-conf.homeManagerModules.tmux
+          nvim-conf.homeManagerModules.nvim
         ];
       };
     };
